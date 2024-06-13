@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kevin.data_annotation_backendmaster.mapper.LabelMapper">
+    <select id="getAllLabel" resultType="com.kevin.data_annotation_backendmaster.entity.Label">
+        select * from label
+    </select>
+
+    <select id="getLabelType" resultType="java.lang.String">
+        select distinct label_type from label
+    </select>
+
+    <select id="getLabel" resultType="java.lang.String">
+        select label from label where label_type = #{labelType}
+    </select>
+
+    <select id="getColor" resultType="java.lang.String">
+        select color from label where label = #{label}
+    </select>
+
+    <delete id="deleteLabel">
+        delete from label where id = #{id};
+    </delete>
+
+    <update id="updateLabel" parameterType="com.kevin.data_annotation_backendmaster.entity.Label">
+    update label set
+    label = #{label},
+    code = #{code},
+    color = #{color},
+    description=#{description},
+    enable=#{enable},
+    shortcuts = #{shortcuts},
+    label_type = #{labelType},
+    is_group = #{isGroup}
+    where id = #{id}
+    </update>
+
+    <insert id="addLabel" parameterType="com.kevin.data_annotation_backendmaster.entity.Label">
+            insert into label (label,code,color,description,enable,shortcuts,is_group,label_type) values (#{label},#{code},#{color},#{description},#{enable},#{shortcuts},#{isGroup},#{labelType})
+    </insert>
+
+</mapper>

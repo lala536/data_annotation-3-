@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kevin.data_annotation_backendmaster.mapper.FaceMapper">
+    <select id="getFace" resultType="com.kevin.data_annotation_backendmaster.entity.Face">
+        select * from face where video_name = #{videoName} and uid = #{uid}
+    </select>
+
+    <select id="getFaceByPersonId" resultType="com.kevin.data_annotation_backendmaster.entity.Face">
+        select * from face where video_name = #{videoName} and uid = #{uid} and person_id = #{personId}
+    </select>
+
+    <delete id="deleteFace">
+        delete from face where video_name = #{videoName} and person_id = #{personId} and uid = #{uid} and time = #{time}
+    </delete>
+</mapper>

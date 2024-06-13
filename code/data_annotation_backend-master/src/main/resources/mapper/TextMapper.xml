@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kevin.data_annotation_backendmaster.mapper.TextMapper">
+    <insert id="createText">
+        insert into text (class_id, group_id, person_id, uid, start, end, text)
+        values (#{classId}, #{groupId}, #{personId}, #{uid}, #{start}, #{end}, #{text})
+    </insert>
+
+    <update id="updateText">
+        update text
+        set
+            class_id = #{classId},
+            group_id = #{groupId},
+            person_id = #{personId},
+            uid = #{uid},
+            start = #{start},
+            end = #{end},
+            text = #{text}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteText">
+        delete from text where id = #{id}
+    </delete>
+
+    <select id="getText" resultType="com.kevin.data_annotation_backendmaster.entity.Text">
+        select * from text where class_id = #{classId} and group_id = #{groupId} and person_id = #{personId} and uid = #{uid}
+    </select>
+
+    <select id="getAllText" resultType="com.kevin.data_annotation_backendmaster.entity.Text">
+        select * from text where class_id = #{classId} and group_id = #{groupId} and uid = #{uid}
+    </select>
+</mapper>

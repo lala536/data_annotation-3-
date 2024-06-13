@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kevin.data_annotation_backendmaster.mapper.GroupRecordMapper">
+    <insert id="createGroupRecord">
+        insert into group_record (class_id, group_id, uid, start, end, label, label_type)
+        values (#{classId}, #{groupId}, #{uid}, #{start}, #{end}, #{label}, #{labelType})
+    </insert>
+
+    <update id="updateGroupRecord">
+        update group_record
+        set
+            class_id = #{classId},
+            group_id = #{groupId},
+            uid = #{uid},
+            start = #{start},
+            end = #{end},
+            label = #{label},
+            label_type = #{labelType}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteGroupRecord">
+        delete from group_record where id = #{id}
+    </delete>
+
+    <select id="getGroupRecord" resultType="com.kevin.data_annotation_backendmaster.entity.GroupRecord">
+        select * from group_record where class_id = #{classId} and group_id = #{groupId} and uid = #{uid} and label_type = #{labelType}
+    </select>
+</mapper>
